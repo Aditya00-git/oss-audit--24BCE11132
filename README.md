@@ -19,13 +19,15 @@ About the Project
 
 This project explores Git from both a technical and philosophical perspective.
 
-It includes:
-- Study of Git’s origin and purpose  
-- Understanding of its GPL v2 license  
-- Ethical discussion of open-source software  
-- Analysis of how Git exists in a Linux system  
-- Comparison with proprietary alternatives  
-- Practical implementation using shell scripts  
+It covers:
+- The origin story of Git and the problem it solved  
+- Understanding of the GPL v2 license and software freedom  
+- Ethical discussion about open-source development  
+- Analysis of Git’s presence and behavior in a Linux system  
+- Comparison between open-source and proprietary tools  
+- Practical implementation using shell scripting  
+
+This project helped in connecting theoretical concepts with real Linux usage.
 
 --------------------------------------------------
 
@@ -33,7 +35,9 @@ Repository Structure
 
 oss-audit-24BCE11132/
 
-├── Screenshot
+├── Screenshot/
+
+├── Report.pdf
 
 ├── README.md
 
@@ -52,19 +56,19 @@ oss-audit-24BCE11132/
 Shell Scripts Overview
 
 Script 1 — System Identity Report  
-Displays system details like OS name, kernel version, user, uptime, and date.
+Displays system information such as OS, kernel version, current user, uptime, and date.
 
 Script 2 — FOSS Package Inspector  
-Checks if Git is installed and shows package details.
+Checks whether Git is installed and retrieves package details.
 
 Script 3 — Disk and Permission Auditor  
-Analyzes system directories and displays size, permissions, owner, and group.
+Analyzes directories and shows permissions, owner, and size.
 
 Script 4 — Log File Analyzer  
-Reads a log file, counts keyword occurrences, and displays results.
+Reads log files, counts keyword matches, and displays summary.
 
 Script 5 — Open Source Manifesto Generator  
-Takes user input and generates a personalized open-source statement.
+Takes user input and creates a personalized open-source statement.
 
 --------------------------------------------------
 
