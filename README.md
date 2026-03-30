@@ -1,174 +1,94 @@
-# Open Source Software Audit — Git (Distributed Version Control System)
+# OSS Capstone Audit — Git
 
+This is my submission for the Open Source Audit capstone project done as part of the Open Source Software course at VITyarthi.
+
+I picked Git for this audit because its literally everywhere. Every project, every internship, every dev job — Git is the first thing they ask if you know. So it made sense to actually dig into it properly rather than just use it blindly.
+
+---
+
+**Name:** Aditya Seswani  
+**Reg No:** 24BCE11132  
 **Course:** Open Source Software (NGMC) — VITyarthi  
-**Student:** Aditya Seswani  
-**Roll Number:** 24BCE11132  
-**Audited Software:** Git | License: GNU GPL v2  
+**Software Audited:** Git (GPL v2)  
 
 ---
 
-## Why Git?
+## About the Project
 
-Git was chosen for this audit because it represents one of the most impactful pieces of
-open-source infrastructure ever built. Created by Linus Torvalds in April 2005 after
-the Linux kernel community lost access to BitKeeper (a proprietary VCS), Git was built
-out of necessity — and released freely so that history would never repeat itself.
+The main idea was to understand Git not just as a tool but as an open source project — where it came from, why it was made free, and what that means in the bigger picture of software development.
 
-Today, Git underpins billions of dollars worth of software projects worldwide, yet remains
-free, open, and community-maintained. That story sits at the heart of what this course is about.
+Some things I covered in the report:
+- How Git was born after BitKeeper pulled its free license from the Linux community
+- What GPL v2 actually means and how it protects user freedom
+- How Git lives and works inside a Linux system
+- Why open source matters and how it compares to proprietary software
+- Then 5 shell scripts to put the Linux stuff into practice
 
 ---
 
-## What This Repository Contains
+## Repo Structure
 
 ```
 oss-audit-24BCE11132/
-│
-├── README.md                            ← You are here
-├── Screenshot/                          ← Script execution screenshots
-├── OSSCapstoneProject.pdf               ← Overall report
-├── script1_system_identity.sh           ← Prints system and OS info
-├── script2_package_inspector.sh         ← Inspects Git installation details
-├── script3_disk_permission_auditor.sh   ← Audits directories and permissions
-├── script4_log_analyzer.sh              ← Parses and analyzes log files
-└── script5_manifesto_generator.sh       ← Generates a personal OSS statement
+├── README.md
+├── Screenshot/
+├── OSSCapstoneProject.pdf
+├── script1_system_identity.sh
+├── script2_package_inspector.sh
+├── script3_disk_permission_auditor.sh
+├── script4_log_analyzer.sh
+└── script5_manifesto_generator.sh
 ```
 
 ---
 
-## Script Breakdown
+## The Scripts
 
-### Script 1 — System Identity Report
-Gathers and displays core system information in a formatted layout.
-Output includes: OS name, kernel version, current user, home directory,
-system uptime, and current date/time. Closes with a note about the GPL v2
-license that governs the Linux kernel itself.
+**Script 1 — System Identity Report**  
+Basically prints out info about the system — OS, kernel, current user, uptime, date. Nothing fancy but good practice with variables and command substitution.
 
-Key concepts practiced: `uname`, `whoami`, `uptime`, `date`, `lsb_release`,
-command substitution `$()`, and variable use with `echo`.
+**Script 2 — FOSS Package Inspector**  
+Checks if Git is installed, figures out whether you're on a Debian or RPM system, and shows package details. Also has a case statement that prints a note about different FOSS tools.
 
----
+**Script 3 — Disk and Permission Auditor**  
+Loops through some standard Linux directories and shows permissions, owner, size etc. Also checks Git specific paths. Helped me understand how Linux handles file permissions better.
 
-### Script 2 — FOSS Package Inspector
-Detects whether Git is installed, identifies the system's package manager
-(RPM-based or Debian-based), and retrieves version and license metadata.
-Uses a `case` statement to display a brief FOSS philosophy note for
-several well-known open-source tools.
+**Script 4 — Log File Analyzer**  
+You pass a log file path and a keyword, and it counts how many lines match and shows the last 5. Has some retry logic too if the file path doesn't exist. This one took me the most time to get right.
 
-Key concepts practiced: `if-then-else`, `case` statement, `command -v`,
-`rpm -qi`, `dpkg -l`, pipes with `grep`.
+**Script 5 — Manifesto Generator**  
+Asks you 3 questions and builds a personalised open source philosophy statement from your answers. Saves it to a txt file. Honestly this one was kind of fun to make.
 
 ---
 
-### Script 3 — Disk and Permission Auditor
-Iterates over a set of standard Linux directories (`/etc`, `/var/log`, `/home`,
-`/usr/bin`, `/tmp`) as well as Git-specific paths. Reports the size, permission
-bits, owner, and group for each location. Also locates the Git binary and
-reports on it separately.
-
-Key concepts practiced: `for` loop with arrays, `if [ -d ]`, `ls -ld`, `awk`,
-`du -sh`, `cut`.
-
----
-
-### Script 4 — Log File Analyzer
-Takes a log file path as a required argument and an optional keyword (defaults
-to `error`). Reads through the file line by line, counts how many lines match
-the keyword, and prints the five most recent matching lines. Includes retry
-logic to look for alternative log files if the given path does not exist.
-
-Key concepts practiced: `while IFS= read -r`, argument handling with `$1`/`$2`,
-`${var:-default}`, counter variables, `grep -i`, `tail`, retry loops.
-
----
-
-### Script 5 — Open Source Manifesto Generator
-An interactive script that prompts the user with three questions and uses the
-answers to generate a customised open-source philosophy statement. The output
-is saved to a `.txt` file named after the current user and also printed to screen.
-
-Key concepts practiced: `read -p`, input validation with `while [ -z ]`,
-string concatenation, file output with `>` and `>>`, `date`, `cat`, `whoami`.
-
----
-
-## Running the Scripts
-
-### Prerequisites
-- Any mainstream Linux distribution (Ubuntu, Debian, Fedora, Arch, etc.)
-- Bash shell — verify with `bash --version`
-- Git installed — `sudo apt install git` or `sudo dnf install git`
-
-### Setup
+## How to Run
 
 ```bash
-# Step 1: Clone the repository
+# clone the repo
 git clone https://github.com/Aditya00-git/oss-audit--24BCE11132
 cd oss-audit-24BCE11132
 
-# Step 2: Grant execute permissions
-chmod +x script1_system_identity.sh script2_package_inspector.sh \
-         script3_disk_permission_auditor.sh script4_log_analyzer.sh \
-         script5_manifesto_generator.sh
-```
+# make scripts executable
+chmod +x script1_system_identity.sh script2_package_inspector.sh script3_disk_permission_auditor.sh script4_log_analyzer.sh script5_manifesto_generator.sh
 
-### Execution
-
-```bash
-# Script 1 — no arguments needed
+# run them
 ./script1_system_identity.sh
-
-# Script 2 — no arguments needed
 ./script2_package_inspector.sh
-
-# Script 3 — no arguments needed
 ./script3_disk_permission_auditor.sh
-
-# Script 4 — log path required, keyword optional
-./script4_log_analyzer.sh /var/log/syslog            # uses default keyword 'error'
-./script4_log_analyzer.sh /var/log/syslog warning    # custom keyword
-./script4_log_analyzer.sh /var/log/messages error    # for RHEL/CentOS systems
-
-# Script 5 — interactive, no arguments needed
+./script4_log_analyzer.sh /var/log/syslog error
 ./script5_manifesto_generator.sh
-# Output saved to: manifesto_<yourusername>.txt
 ```
 
----
-
-## Tool Dependencies
-
-| Script | Tools Used |
-|--------|-----------|
-| Script 1 | `uname`, `whoami`, `uptime`, `date`, `lsb_release` |
-| Script 2 | `rpm` or `dpkg`, `git`, `grep` |
-| Script 3 | `ls`, `du`, `awk`, `cut`, `which` |
-| Script 4 | `grep`, `tail` |
-| Script 5 | `date`, `cat`, `whoami` |
-
-All tools listed above come pre-installed on standard Linux distributions.
-No third-party packages are required.
+You need a Linux system with bash and Git installed. Thats pretty much it, no extra dependencies.
 
 ---
 
-## Git — Quick Reference
+## About Git
 
-| Field | Value |
-|-------|-------|
-| Type | Distributed Version Control System |
-| Creator | Linus Torvalds |
-| First Released | April 2005 |
-| Current Maintainer | Junio C Hamano |
-| License | GNU General Public License v2 (GPL v2) |
-| Official Website | https://git-scm.com |
-| Source Code | https://github.com/git/git |
+Git was created by Linus Torvalds in 2005. Its a distributed version control system licensed under GPL v2. The current maintainer is Junio C Hamano. Official site is git-scm.com.
 
 ---
 
-## Submission Note
+## Note
 
-This repository is submitted as the OSS Capstone Project for the VITyarthi
-Open Source Software course. It is accompanied by a project report (PDF) that
-covers the origin story of Git, a GPL v2 license analysis, Git's Linux footprint,
-and a broader discussion of the FOSS ecosystem.
-
+All scripts were written by me and tested on Linux. The report and code are my own work submitted for the VITyarthi OSS capstone.
