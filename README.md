@@ -26,6 +26,7 @@ oss-audit-24BCE11132/
 │
 ├── README.md                            ← You are here
 ├── Screenshot/                          ← Script execution screenshots
+├── OSSCapstoneProject.pdf               ← Overall report
 ├── script1_system_identity.sh           ← Prints system and OS info
 ├── script2_package_inspector.sh         ← Inspects Git installation details
 ├── script3_disk_permission_auditor.sh   ← Audits directories and permissions
